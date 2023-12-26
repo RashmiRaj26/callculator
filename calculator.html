@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #calculator {
+            display: block;
+            margin: auto;
+            margin-top: 60px;
+            width: 250px;
+            height: 380px;
+            border: 4px solid black;
+            background-color:black;
+            border-radius: 8px;
+            
+        }
+        body{
+            background: url('https://thumbs.dreamstime.com/b/abstract-numbers-background-23906248.jpg');
+        }
+        #c{
+            background-color: red;
+        }
+
+        button {
+            width: 45px;
+            height: 45px;
+            padding: 5px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            background-color: navy;
+            color: white;
+            border-radius: 10px;
+            margin: 5px;
+            font-size: large;
+        }
+
+        #buttons {
+            /* margin-top:260px ; */
+            margin-top: 10px;
+            margin-left: 9px;
+        }
+
+        #mul,
+        #divi,
+        #mul,
+        #modulo,
+        #add,
+        #sub,
+        #equal,
+        #dot,
+        #C{
+            background-color: orange;
+        }
+        #Delete{
+            background-color: rgb(252, 90, 3);
+        }
+        input{
+            margin: auto;
+            margin-top: 18px;
+            width: 233px;
+            margin-left: 4px;
+            height: 60px;
+            background-color: rgb(162, 162, 162);
+            border-radius: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            text-align: right;
+        }
+        h1{
+            text-align: center;
+            font-size: xxx-large;
+            text-shadow: 20px grey;
+        }
+        input ::placeholder{
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CALCULATOR</h1>
+    <div id="calculator">
+        <div id="display"><input name="display" id="inpbox" placeholder="0" type="text">
+        </div>
+        <div id="buttons">
+            <button id="c">AC</button>
+            <button id="divi">/</button>
+            <button id="add">+</button>
+            <button id="mul">*</button>
+            <button id="9">9</button>
+            <button id="8">8</button>
+            <button id="7">7</button>
+            <button id="sub">-</button>
+            <button id="6">6</button>
+            <button id="5">5</button>
+            <button id="4">4</button>
+            <button id="modulo">%</button>
+            <button id="3">3</button>
+            <button id="2">2</button>
+            <button id="1">1</button>
+            <button id="dot">.</button>
+            <button id="Delete">DEL</button>
+            <button id="0">0</button>
+            <button id="doublezero">00</button>
+            <button id="equal">=</button>
+        </div>
+    </div>
+    <script src="jquery/jquery.js"></script>
+    <script>
+//document.addEventListener('DOMContentLoaded', function() {
+  let input = document.getElementById("inpbox");
+  let buttons = document.querySelectorAll("button");
+  let string = "";
+
+  buttons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      let buttonText = this.textContent;
+
+      if (buttonText === '=') {
+        string = eval(string);
+        document.querySelector('input').value=string;
+      } else if (buttonText === 'AC') {
+        input.value = "";
+        string = "";
+      }else if(buttonText === 'DEL'){
+        string=string.substring(0,string.length-1);
+        input.value=string;
+      } 
+      else {
+        string += buttonText;
+        input.value = string;
+      }
+    });
+  });
+//});
+
+    </script>
+</body>
+
+</html>
